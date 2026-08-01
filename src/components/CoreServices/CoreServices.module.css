@@ -33,18 +33,30 @@
 
 .tabList {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
   margin-bottom: 44px;
   background: var(--bg-raised-3);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-panel);
   padding: 8px;
-  max-width: fit-content;
+  max-width: 780px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .tabList {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tabList {
+    grid-template-columns: 1fr;
+  }
 }
 
 .tab {
@@ -52,9 +64,9 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: center;
   gap: 9px;
-  padding: 12px 20px;
+  padding: 12px 16px;
   border-radius: var(--radius-pill);
   border: none;
   cursor: pointer;
