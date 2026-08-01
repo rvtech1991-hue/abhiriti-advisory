@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--gutter);
+  background: oklch(14% 0.01 260 / 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-right: 28px;
+}
+
+.logoTile {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--gradient-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoTile span {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--bg-base);
+  font-size: 17px;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.wordmark strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+
+.wordmark span {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: nowrap;
+}
+
+.navLink {
+  color: oklch(90% 0.006 90);
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.ctaPill {
+  background: var(--gradient-accent);
+  color: var(--bg-base);
+  padding: 11px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.2s var(--ease-standard), box-shadow 0.2s var(--ease-standard);
+  display: inline-block;
+}
+.ctaPill:hover,
+.ctaPill:focus-visible {
+  color: var(--bg-base);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px oklch(78% 0.14 85 / 0.35);
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+.hamburger span {
+  height: 2px;
+  background: var(--text-body);
+  display: block;
+}
+.hamburger span:nth-child(1) {
+  width: 26px;
+}
+.hamburger span:nth-child(2) {
+  width: 26px;
+}
+.hamburger span:nth-child(3) {
+  width: 18px;
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  top: 78px;
+  z-index: 49;
+  background: var(--bg-base);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 8vw;
+  gap: 26px;
+}
+
+.mobileLink {
+  color: var(--text-body);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.mobileLink.contact {
+  color: var(--gold);
+}

@@ -1,0 +1,150 @@
+.section {
+  position: relative;
+  padding: 110px var(--gutter) 50px;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  top: -180px;
+  right: -160px;
+  background: radial-gradient(circle, oklch(65% 0.15 290 / 0.14), transparent 70%);
+  filter: blur(10px);
+  animation: orbDrift 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.grid {
+  position: relative;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 859px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photoCard {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-photo);
+}
+
+.photoCard img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.statOverlay {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  background: oklch(14% 0.01 260 / 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid oklch(94% 0.008 90 / 0.15);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.statOverlay .statNum {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  background: linear-gradient(135deg, var(--gold-soft), oklch(70% 0.14 60));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.statOverlay .statCaption {
+  font-size: 12.5px;
+  color: oklch(94% 0.008 90 / 0.65);
+  margin-top: 2px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 3.6vw, 48px);
+  margin: 16px 0 22px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.copy p {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: oklch(94% 0.008 90 / 0.68);
+  max-width: 560px;
+  margin: 0 0 18px;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.valueCard {
+  background: var(--bg-raised-2);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  padding: 20px 18px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.valueCard:hover {
+  transform: translateY(-6px);
+  border-color: oklch(78% 0.14 85 / 0.5);
+}
+
+.valueMono {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, oklch(78% 0.14 85 / 0.2), oklch(65% 0.15 60 / 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: oklch(80% 0.13 85);
+}
+
+.valueTitle {
+  font-weight: 700;
+  font-size: 15px;
+  color: oklch(96% 0.006 90);
+}
+
+.valueCaption {
+  font-size: 12.5px;
+  color: oklch(94% 0.008 90 / 0.5);
+  margin-top: 4px;
+}

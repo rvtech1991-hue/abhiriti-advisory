@@ -1,0 +1,42 @@
+:root {
+  --bg-base: oklch(14% 0.01 260);
+  --bg-raised-1: oklch(16% 0.012 260);
+  --bg-raised-2: oklch(18% 0.014 260);
+  --bg-raised-3: oklch(19% 0.012 260);
+  --bg-raised-4: oklch(20% 0.02 260);
+  --bg-input: oklch(21% 0.016 260);
+  --bg-footer: oklch(10% 0.01 260);
+
+  --text-primary: oklch(97% 0.006 90);
+  --text-body: oklch(94% 0.008 90);
+  --text-muted: oklch(65% 0.01 90);
+
+  --gold: oklch(78% 0.14 85);
+  --gold-soft: oklch(85% 0.1 85);
+  --copper: oklch(65% 0.15 60);
+  --violet: oklch(65% 0.15 290);
+
+  --border-hairline: oklch(94% 0.008 90 / 0.08);
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Sora', sans-serif;
+
+  --radius-pill: 100px;
+  --radius-card: 14px;
+  --radius-card-lg: 16px;
+  --radius-panel: 24px;
+  --radius-image: 18px;
+
+  --shadow-card: 0 20px 40px oklch(78% 0.14 85 / 0.12);
+  --shadow-photo: 0 30px 70px oklch(0% 0 0 / 0.45);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --gradient-accent: linear-gradient(135deg, var(--gold), var(--copper));
+  --gradient-accent-cta: linear-gradient(120deg, var(--gold), var(--copper));
+  --gradient-panel: linear-gradient(160deg, var(--bg-raised-4), var(--bg-raised-2));
+
+  --content-max: 1280px;
+  --gutter: 6vw;
+  --nav-breakpoint: 860px;
+}

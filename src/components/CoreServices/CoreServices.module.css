@@ -1,0 +1,224 @@
+.tabsSection {
+  padding: 110px var(--gutter) 60px;
+  background: var(--bg-base);
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 44px);
+  margin: 16px 0 0;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+
+.tabList {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+  background: var(--bg-raised-3);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-pill);
+  padding: 8px;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13.5px;
+  background: transparent;
+  color: oklch(90% 0.006 90);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tab.active {
+  background: var(--gradient-accent);
+  color: var(--bg-base);
+}
+
+.tabDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--bg-base);
+  background: currentColor;
+}
+
+.tab .tabDot {
+  color: var(--gold);
+}
+.tab.active .tabDot {
+  color: oklch(14% 0.01 260 / 0.85);
+}
+
+.panel {
+  background: var(--gradient-panel);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-panel);
+  padding: 54px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(260px, 0.8fr);
+  gap: 50px;
+  align-items: center;
+}
+
+@media (max-width: 859px) {
+  .panel {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+  }
+}
+
+.panelTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.panelDesc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: oklch(94% 0.008 90 / 0.68);
+  margin: 0 0 26px;
+  max-width: 460px;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 500px;
+}
+
+@media (max-width: 479px) {
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: oklch(92% 0.006 90);
+}
+
+.checkDot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.panelImage {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  position: relative;
+}
+
+.panelImage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Detail grid */
+.detailSection {
+  padding: 60px var(--gutter) 110px;
+  background: var(--bg-base);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.detailCard {
+  background: var(--bg-raised-2);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card-lg);
+  padding: 24px 22px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+.detailCard:hover {
+  transform: translateY(-7px);
+  border-color: oklch(78% 0.14 85 / 0.5);
+  box-shadow: var(--shadow-card);
+}
+
+.detailMono {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, oklch(78% 0.14 85 / 0.18), oklch(65% 0.15 60 / 0.18));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: oklch(80% 0.13 85);
+}
+
+.detailTitle {
+  font-size: 15.5px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: oklch(96% 0.006 90);
+}
+
+.detailDesc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: oklch(94% 0.008 90 / 0.55);
+  margin: 0;
+}

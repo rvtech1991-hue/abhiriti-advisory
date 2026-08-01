@@ -1,0 +1,36 @@
+.strip {
+  padding: 34px 0;
+  background: var(--bg-raised-1);
+  border-top: 1px solid oklch(94% 0.008 90 / 0.06);
+  border-bottom: 1px solid oklch(94% 0.008 90 / 0.06);
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+  gap: 56px;
+  align-items: center;
+}
+
+.strip:hover .track {
+  animation-play-state: paused;
+}
+
+.tile {
+  opacity: 0.55;
+  filter: grayscale(1);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: oklch(90% 0.006 90);
+  white-space: nowrap;
+  cursor: default;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.tile:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
