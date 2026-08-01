@@ -1,3 +1,18 @@
+/* Defined locally (not imported from global.css) because Vite's CSS Modules
+   scope animation-name references within .module.css files, which would
+   otherwise silently break the reference to the global @keyframes. */
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
 .section {
   position: relative;
   padding: 110px var(--gutter) 50px;

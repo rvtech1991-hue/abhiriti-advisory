@@ -1,3 +1,15 @@
+/* Defined locally (not imported from global.css) because Vite's CSS Modules
+   scope animation-name references within .module.css files, which would
+   otherwise silently break the reference to the global @keyframes. */
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 oklch(78% 0.14 85 / 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 20px oklch(78% 0.14 85 / 0);
+  }
+}
+
 .section {
   padding: 110px var(--gutter);
   background: var(--bg-base);

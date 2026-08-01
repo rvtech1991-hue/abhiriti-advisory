@@ -52,6 +52,7 @@
   z-index: 1;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   gap: 9px;
   padding: 12px 20px;
   border-radius: var(--radius-pill);
@@ -59,6 +60,7 @@
   cursor: pointer;
   font-weight: 700;
   font-size: 13.5px;
+  white-space: nowrap;
   background: transparent;
   color: oklch(90% 0.006 90);
   transition: background 0.25s ease, color 0.25s ease;

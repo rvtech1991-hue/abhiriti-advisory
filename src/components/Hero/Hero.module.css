@@ -1,3 +1,55 @@
+/* Defined locally (not imported from global.css) because Vite's CSS Modules
+   scope animation-name references within .module.css files, which would
+   otherwise silently break the reference to the global @keyframes. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes orbDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes bounceDown {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 oklch(78% 0.14 85 / 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 20px oklch(78% 0.14 85 / 0);
+  }
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
