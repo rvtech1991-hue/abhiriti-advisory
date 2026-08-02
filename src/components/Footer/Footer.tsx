@@ -29,13 +29,15 @@ export function Footer() {
             <span>Financial Services</span>
             <span>RERA Services</span>
             <span>Software Services</span>
+            <span>Insurance Services</span>
+            <span>Mediclaim Services</span>
           </div>
         </div>
         <div>
           <div className={styles.colTitle}>Contact</div>
           <div className={styles.colLinks}>
-            <span>hello@abhiritiadvisory.com</span>
-            <span>+91 98XXX XXXXX</span>
+            <span>RvTech1991@gmail.com</span>
+            <span>+91 78751 91359</span>
             <span>Belapur, Navi Mumbai, Maharashtra</span>
           </div>
         </div>

@@ -15,7 +15,9 @@ export function ClientsGrid() {
         <div className={styles.grid}>
           {industries.map((industry) => (
             <div key={industry.name} className={styles.tile}>
-              <div className={styles.iconMono}>{industry.name.charAt(0)}</div>
+              <div className={styles.imageWrap}>
+                <img src={industry.img} alt={industry.name} loading="lazy" decoding="async" />
+              </div>
               <span className={styles.name}>{industry.name}</span>
             </div>
           ))}

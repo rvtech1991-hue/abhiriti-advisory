@@ -31,7 +31,12 @@ export function CoreServices() {
                   className={`${styles.tab} ${isActive ? styles.active : ''}`}
                   onClick={() => setActiveIndex(i)}
                 >
-                  <span className={styles.tabDot}>{svc.mono}</span>
+                  <span
+                    className={styles.tabDot}
+                    style={isActive ? undefined : { backgroundColor: svc.color }}
+                  >
+                    {svc.mono}
+                  </span>
                   {svc.title}
                 </button>
               );

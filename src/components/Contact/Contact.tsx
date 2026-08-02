@@ -29,7 +29,7 @@ const AUTOREPLY_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
   | string
   | undefined;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
-const COMPANY_EMAIL = (import.meta.env.VITE_COMPANY_EMAIL as string | undefined) || 'rvTech1991@gmail.com';
+const COMPANY_EMAIL = (import.meta.env.VITE_COMPANY_EMAIL as string | undefined) || 'RvTech1991@gmail.com';
 const COMPANY_NAME = (import.meta.env.VITE_COMPANY_NAME as string | undefined) || 'Abhiriti Advisory';
 
 function isValidEmail(value: string) {
@@ -46,6 +46,11 @@ export function Contact() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((f) => ({ ...f, [field]: e.target.value }));
+  };
+
+  const updatePhone = (e: ChangeEvent<HTMLInputElement>) => {
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setForm((f) => ({ ...f, phone: digitsOnly }));
   };
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
@@ -123,11 +128,11 @@ export function Contact() {
           <div className={styles.rows}>
             <div>
               <div className={styles.rowLabel}>Email</div>
-              <div className={styles.rowValue}>hello@abhiritiadvisory.com</div>
+              <div className={styles.rowValue}>RvTech1991@gmail.com</div>
             </div>
             <div>
               <div className={styles.rowLabel}>Phone</div>
-              <div className={styles.rowValue}>+91 98XXX XXXXX</div>
+              <div className={styles.rowValue}>+91 78751 91359</div>
             </div>
             <div>
               <div className={styles.rowLabel}>Office</div>
@@ -139,8 +144,10 @@ export function Contact() {
         <div className={styles.card}>
           {submitted ? (
             <div className={styles.successWrap}>
-              <div className={styles.checkBadge}>✓</div>
-              <h3>Thank you, {form.name}.</h3>
+              <div className={styles.successHeading}>
+                <div className={styles.checkBadge}>✓</div>
+                <h3>Thank you, {form.name}.</h3>
+              </div>
               <p>
                 Your message has been received. A confirmation has been sent to {form.email}, and
                 our team will reach out shortly.
@@ -168,9 +175,11 @@ export function Contact() {
                   <input
                     id="phone"
                     type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
                     value={form.phone}
-                    onChange={update('phone')}
-                    placeholder="+91"
+                    onChange={updatePhone}
+                    placeholder="10-digit mobile number"
                   />
                 </div>
               </div>
@@ -227,6 +236,7 @@ export function Contact() {
               </div>
 
               <button type="submit" className={styles.submit} disabled={submitting}>
+                {submitting && <span className={styles.spinner} aria-hidden="true" />}
                 {submitting ? 'Sending…' : 'Send Message'}
               </button>
             </form>
