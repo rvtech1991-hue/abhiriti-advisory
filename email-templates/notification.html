@@ -1,0 +1,69 @@
+<!--
+  EmailJS template: "New Enquiry" (sent to the company inbox)
+  Template settings:
+    To Email:   {{to_email}}
+    From Name:  {{company_name}}
+    Reply To:   {{from_email}}
+    Subject:    New Enquiry from {{from_name}} – {{service}}
+-->
+<div style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f4f7; padding:24px 0; margin:0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; margin:0 auto; background:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #e5e5ea;">
+    <tr>
+      <td style="background-color:#D9B568; padding:24px 32px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="vertical-align:middle; width:44px;">
+              <span style="display:inline-block; width:34px; height:34px; background-color:#14141B; border-radius:8px; text-align:center; line-height:34px; font-weight:bold; color:#D9B568; font-size:16px; font-family:Georgia, serif;">A</span>
+            </td>
+            <td style="vertical-align:middle; padding-left:12px;">
+              <div style="font-size:18px; font-weight:bold; color:#14141B; font-family:Arial, sans-serif;">{{company_name}}</div>
+              <div style="font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#3a2c14;">Finance &middot; Compliance &middot; Tech</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:32px;">
+        <h2 style="margin:0 0 8px; font-size:20px; color:#14141B;">New website enquiry</h2>
+        <p style="margin:0 0 24px; font-size:14px; color:#6b6b76;">You've received a new enquiry from the {{company_name}} website contact form.</p>
+
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px; color:#222222;">
+          <tr>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; width:130px; color:#6b6b76;">Name</td>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; font-weight:bold;">{{from_name}}</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; color:#6b6b76;">Email</td>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee;"><a href="mailto:{{from_email}}" style="color:#C47A4A; text-decoration:none;">{{from_email}}</a></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; color:#6b6b76;">Phone</td>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee;">{{phone}}</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; color:#6b6b76;">Service Interested</td>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee;">{{service}}</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; color:#6b6b76; vertical-align:top;">Message</td>
+            <td style="padding:10px 0; border-bottom:1px solid #eeeeee; white-space:pre-wrap;">{{message}}</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0; color:#6b6b76;">Submitted</td>
+            <td style="padding:10px 0;">{{submitted_at}}</td>
+          </tr>
+        </table>
+
+        <div style="margin-top:28px;">
+          <a href="mailto:{{from_email}}" style="display:inline-block; background-color:#14141B; color:#D9B568; text-decoration:none; padding:12px 24px; border-radius:100px; font-size:14px; font-weight:bold;">Reply to {{from_name}}</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color:#f4f4f7; padding:16px 32px; font-size:12px; color:#9a9aa3;">
+        This enquiry was submitted via the contact form on abhiritiadvisory.com.
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type SubmitEvent } from 'react';
 import emailjs from '@emailjs/browser';
+import { services } from '../../data/services';
 import styles from './Contact.module.css';
 
 interface FormState {
@@ -11,11 +12,13 @@ interface FormState {
   company: string; // honeypot
 }
 
+const SERVICE_OPTIONS = [...services.map((s) => ({ id: s.id, title: s.title })), { id: 'other', title: 'Something else' }];
+
 const INITIAL_FORM: FormState = {
   name: '',
   email: '',
   phone: '',
-  service: 'CA',
+  service: SERVICE_OPTIONS[0].id,
   message: '',
   company: '',
 };
@@ -26,6 +29,8 @@ const AUTOREPLY_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID
   | string
   | undefined;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+const COMPANY_EMAIL = (import.meta.env.VITE_COMPANY_EMAIL as string | undefined) || 'rvTech1991@gmail.com';
+const COMPANY_NAME = (import.meta.env.VITE_COMPANY_NAME as string | undefined) || 'Abhiriti Advisory';
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -61,12 +66,20 @@ export function Contact() {
     }
 
     setSubmitting(true);
+    const serviceLabel =
+      SERVICE_OPTIONS.find((s) => s.id === form.service)?.title ?? form.service;
     const payload = {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      service: form.service,
-      message: form.message,
+      from_name: form.name,
+      from_email: form.email,
+      phone: form.phone || 'Not provided',
+      service: serviceLabel,
+      message: form.message || 'No message provided',
+      to_email: COMPANY_EMAIL,
+      company_name: COMPANY_NAME,
+      submitted_at: new Date().toLocaleString('en-IN', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      }),
     };
 
     try {
@@ -177,11 +190,11 @@ export function Contact() {
               <div className={styles.field}>
                 <label htmlFor="service">Service of interest</label>
                 <select id="service" value={form.service} onChange={update('service')}>
-                  <option value="CA">CA Services</option>
-                  <option value="Financial">Financial Services</option>
-                  <option value="RERA">RERA Services</option>
-                  <option value="Software">Software Services</option>
-                  <option value="Other">Something else</option>
+                  {SERVICE_OPTIONS.map((opt) => (
+                    <option key={opt.id} value={opt.id}>
+                      {opt.title}
+                    </option>
+                  ))}
                 </select>
               </div>
 
