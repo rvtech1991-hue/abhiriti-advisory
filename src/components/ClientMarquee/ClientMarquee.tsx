@@ -9,6 +9,9 @@ export function ClientMarquee() {
       <div className={styles.track}>
         {looped.map((industry, i) => (
           <div key={`${industry.name}-${i}`} className={styles.tile}>
+            <span className={styles.iconWrap}>
+              <img src={industry.img} alt="" loading="lazy" decoding="async" />
+            </span>
             {industry.name}
           </div>
         ))}
