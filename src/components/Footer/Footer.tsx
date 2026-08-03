@@ -1,3 +1,4 @@
+import { services } from '../../data/services';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -25,12 +26,11 @@ export function Footer() {
         <div>
           <div className={styles.colTitle}>Services</div>
           <div className={styles.colLinks}>
-            <span>CA Services</span>
-            <span>Financial Services</span>
-            <span>RERA Services</span>
-            <span>Software Services</span>
-            <span>Insurance Services</span>
-            <span>Mediclaim Services</span>
+            {services.map((svc) => (
+              <a key={svc.id} href={`#core-${svc.id}`}>
+                {svc.title}
+              </a>
+            ))}
           </div>
         </div>
         <div>

@@ -39,12 +39,38 @@
 .colLinks {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
 }
 
 .colLinks a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
   color: inherit;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.colLinks a::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.25s ease;
+  flex-shrink: 0;
+}
+
+.colLinks a:hover,
+.colLinks a:focus-visible {
+  color: var(--gold-soft);
+  transform: translateX(4px);
+}
+
+.colLinks a:hover::before,
+.colLinks a:focus-visible::before {
+  width: 12px;
 }
 
 .colLinks span {
