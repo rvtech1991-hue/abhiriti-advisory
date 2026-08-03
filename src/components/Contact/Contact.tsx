@@ -36,11 +36,39 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+type ValidatedField = 'name' | 'phone' | 'email';
+
+function fieldError(field: ValidatedField, value: string): string {
+  if (field === 'name') {
+    return value.trim() ? '' : 'Name is required.';
+  }
+  if (field === 'phone') {
+    if (!value) return 'Phone number is required.';
+    if (value.length !== 10) return 'Enter a valid 10-digit mobile number.';
+    return '';
+  }
+  if (!value.trim()) return 'Email is required.';
+  return isValidEmail(value) ? '' : 'Enter a valid email address.';
+}
+
 export function Contact() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [touched, setTouched] = useState<Record<ValidatedField, boolean>>({
+    name: false,
+    phone: false,
+    email: false,
+  });
+
+  // Derived fresh from `form` on every render, so an error clears the instant
+  // the field becomes valid instead of lingering until the next submit.
+  const errors: Record<ValidatedField, string> = {
+    name: fieldError('name', form.name),
+    phone: fieldError('phone', form.phone),
+    email: fieldError('email', form.email),
+  };
 
   const update = (field: keyof FormState) => (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -53,6 +81,10 @@ export function Contact() {
     setForm((f) => ({ ...f, phone: digitsOnly }));
   };
 
+  const markTouched = (field: ValidatedField) => () => {
+    setTouched((t) => ({ ...t, [field]: true }));
+  };
+
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
@@ -60,8 +92,9 @@ export function Contact() {
     // Honeypot: bots fill hidden fields, humans don't.
     if (form.company) return;
 
-    if (!form.name.trim() || !isValidEmail(form.email)) {
-      setError('Please enter your name and a valid email address.');
+    if (errors.name || errors.phone || errors.email) {
+      setTouched({ name: true, phone: true, email: true });
+      setError('Please fix the highlighted fields before sending.');
       return;
     }
 
@@ -76,7 +109,7 @@ export function Contact() {
     const payload = {
       from_name: form.name,
       from_email: form.email,
-      phone: form.phone || 'Not provided',
+      phone: form.phone,
       service: serviceLabel,
       message: form.message || 'No message provided',
       to_email: COMPANY_EMAIL,
@@ -113,6 +146,8 @@ export function Contact() {
   const resetForm = () => {
     setSubmitted(false);
     setForm(INITIAL_FORM);
+    setTouched({ name: false, phone: false, email: false });
+    setError('');
   };
 
   return (
@@ -165,10 +200,19 @@ export function Contact() {
                     id="name"
                     type="text"
                     required
+                    className={touched.name && errors.name ? styles.inputError : undefined}
                     value={form.name}
                     onChange={update('name')}
+                    onBlur={markTouched('name')}
                     placeholder="Your name"
+                    aria-invalid={touched.name && Boolean(errors.name)}
+                    aria-describedby="name-error"
                   />
+                  {touched.name && errors.name && (
+                    <p id="name-error" className={styles.fieldError}>
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div className={styles.field}>
                   <label htmlFor="phone">Phone</label>
@@ -176,11 +220,21 @@ export function Contact() {
                     id="phone"
                     type="tel"
                     inputMode="numeric"
+                    required
                     maxLength={10}
+                    className={touched.phone && errors.phone ? styles.inputError : undefined}
                     value={form.phone}
                     onChange={updatePhone}
+                    onBlur={markTouched('phone')}
                     placeholder="10-digit mobile number"
+                    aria-invalid={touched.phone && Boolean(errors.phone)}
+                    aria-describedby="phone-error"
                   />
+                  {touched.phone && errors.phone && (
+                    <p id="phone-error" className={styles.fieldError}>
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -190,10 +244,19 @@ export function Contact() {
                   id="email"
                   type="email"
                   required
+                  className={touched.email && errors.email ? styles.inputError : undefined}
                   value={form.email}
                   onChange={update('email')}
+                  onBlur={markTouched('email')}
                   placeholder="you@company.com"
+                  aria-invalid={touched.email && Boolean(errors.email)}
+                  aria-describedby="email-error"
                 />
+                {touched.email && errors.email && (
+                  <p id="email-error" className={styles.fieldError}>
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               <div className={styles.field}>
