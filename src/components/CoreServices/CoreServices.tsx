@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { services } from '../../data/services';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './CoreServices.module.css';
@@ -8,6 +8,23 @@ export function CoreServices() {
   const active = services[activeIndex];
   const tabsRevealRef = useScrollReveal<HTMLDivElement>();
   const detailRevealRef = useScrollReveal<HTMLDivElement>();
+
+  // Footer service links jump here via "#core-<serviceId>" so the matching
+  // tab opens automatically instead of just landing on the first one.
+  useEffect(() => {
+    const applyHash = () => {
+      const match = window.location.hash.match(/^#core-(.+)$/);
+      if (!match) return;
+      const index = services.findIndex((s) => s.id === match[1]);
+      if (index === -1) return;
+      setActiveIndex(index);
+      document.getElementById('core')?.scrollIntoView({ block: 'start' });
+      history.replaceState(null, '', '#core');
+    };
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+  }, []);
 
   return (
     <>

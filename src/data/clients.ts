@@ -28,7 +28,7 @@ export const industries: Industry[] = [
   },
   {
     name: 'Pharmaceuticals',
-    img: 'https://images.pexels.com/photos/3873150/pexels-photo-3873150.jpeg?auto=compress&cs=tinysrgb&w=640',
+    img: 'https://images.pexels.com/photos/8539078/pexels-photo-8539078.jpeg?auto=compress&cs=tinysrgb&w=1280',
   },
   {
     name: 'Food & Beverage',

@@ -11,8 +11,14 @@
 }
 
 .section {
-  padding: 110px var(--gutter);
+  padding: 110px var(--gutter) 70px;
   background: var(--bg-base);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 90px var(--gutter) 50px;
+  }
 }
 
 .inner {
