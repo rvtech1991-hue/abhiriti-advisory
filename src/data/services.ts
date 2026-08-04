@@ -4,15 +4,21 @@ export interface DetailItem {
   desc: string;
 }
 
+export interface ServiceCategory {
+  title: string;
+  items: string[];
+}
+
 export interface ServiceVertical {
   id: string;
   title: string;
   mono: string;
   color: string;
-  img: string;
   desc: string;
-  items: string[];
-  detailItems: DetailItem[];
+  /** Grouped sub-categories (used for CA Services — mirrors the firm's real service catalogue). */
+  categories?: ServiceCategory[];
+  /** Flat card grid (used for verticals without sub-categories). */
+  detailItems?: DetailItem[];
 }
 
 export const services: ServiceVertical[] = [
@@ -21,27 +27,161 @@ export const services: ServiceVertical[] = [
     title: 'CA Services',
     mono: 'CA',
     color: 'var(--gold)',
-    img: 'https://images.pexels.com/photos/6863250/pexels-photo-6863250.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Complete chartered accountancy support so your compliance never slips.',
-    items: [
-      'Statutory & Tax Audit',
-      'Income Tax & GST Filing',
-      'Company Incorporation',
-      'Bookkeeping & Payroll',
-      'TDS Compliance',
-      'Business Valuation',
-    ],
-    detailItems: [
-      { mono: 'CR', title: 'Company Registration & ROC', desc: 'Incorporation, ROC filings and annual compliance for all entity types.' },
-      { mono: 'GST', title: 'GST Registration & Filing', desc: 'Registration, monthly/quarterly returns and reconciliation.' },
-      { mono: 'IT', title: 'Income Tax Return Filing', desc: 'Individual and corporate ITR filing with tax-saving planning.' },
-      { mono: 'AU', title: 'Statutory & Internal Audit', desc: 'Independent audits for accuracy, control and regulatory sign-off.' },
-      { mono: 'TDS', title: 'TDS Compliance', desc: 'Deduction, deposit and quarterly TDS return filing.' },
-      { mono: 'PB', title: 'Payroll & Bookkeeping', desc: 'Monthly books, payroll processing and MIS reporting.' },
-      { mono: 'BV', title: 'Business Valuation', desc: 'Valuations for fundraising, M&A and regulatory purposes.' },
-      { mono: 'IP', title: 'Trademark & IP Registration', desc: 'Brand and IP protection filings, end to end.' },
-      { mono: 'NRI', title: 'NRI Taxation Services', desc: 'Tax filing, repatriation and DTAA advisory for NRIs.' },
-      { mono: 'SU', title: 'Startup Advisory', desc: 'Structuring, compliance calendars and fundraising support.' },
+    categories: [
+      {
+        title: 'GST Advisory & Compliance',
+        items: [
+          'GST Registration',
+          'GST Amendment & Cancellation',
+          'Monthly & Quarterly GST Return Filing',
+          'GSTR-1, GSTR-3B, GSTR-9 & GSTR-9C',
+          'GST Annual Compliance',
+          'GST Audit Support',
+          'GST Health Check',
+          'Input Tax Credit (ITC) Reconciliation',
+          'GST Refund',
+          'LUT Filing',
+          'E-Way Bill Compliance',
+          'E-Invoicing',
+          'GST Notices & Departmental Replies',
+          'GST Appeals & Litigation',
+          'GST Due Diligence',
+        ],
+      },
+      {
+        title: 'Income Tax Services',
+        items: [
+          'Income Tax Return Filing',
+          'Tax Planning',
+          'Tax Audit',
+          'Advance Tax Computation',
+          'TDS & TCS Compliance',
+          'PAN & TAN Services',
+          'Income Tax Notices',
+          'Assessment Proceedings',
+          'Appeal Representation',
+          'Lower Deduction Certificate',
+          'Capital Gain Planning',
+          'NRI Taxation',
+        ],
+      },
+      {
+        title: 'Audit & Assurance',
+        items: [
+          'Statutory Audit',
+          'Internal Audit',
+          'Tax Audit',
+          'Bank Audit',
+          'Stock Audit',
+          'Concurrent Audit',
+          'Management Audit',
+          'Process Audit',
+          'Due Diligence',
+          'IFC Review',
+          'Risk Assessment',
+        ],
+      },
+      {
+        title: 'Accounting & Outsourcing',
+        items: [
+          'Bookkeeping',
+          'Accounting Outsourcing',
+          'Virtual Accounts Department',
+          'Payroll Processing',
+          'Financial Statements',
+          'Fixed Asset Register',
+          'Bank Reconciliation',
+          'Inventory Accounting',
+          'MIS Reports',
+          'CFO Reports',
+        ],
+      },
+      {
+        title: 'Company Law & ROC Compliance',
+        items: [
+          'Private Limited Company Registration',
+          'LLP Registration',
+          'OPC Registration',
+          'Section 8 Company Registration',
+          'Annual ROC Compliance',
+          'DIR-3 KYC',
+          'Director Appointment & Resignation',
+          'Share Transfer',
+          'Increase in Authorised Capital',
+          'Change of Registered Office',
+          'Charge Creation & Satisfaction',
+          'Company Strike Off',
+          'Company Revival',
+        ],
+      },
+      {
+        title: 'Business Registration Services',
+        items: [
+          'GST Registration',
+          'MSME/Udyam Registration',
+          'IEC Registration',
+          'Startup Registration',
+          'Shop & Establishment Registration',
+          'Professional Tax Registration',
+          'PF Registration',
+          'ESIC Registration',
+          'FSSAI Registration',
+          'Trade License',
+        ],
+      },
+      {
+        title: 'Virtual CFO Services',
+        items: [
+          'CFO Advisory',
+          'Budgeting & Forecasting',
+          'Cash Flow Management',
+          'Cost Reduction Strategies',
+          'Financial Planning',
+          'MIS Dashboard',
+          'Business Performance Review',
+          'Investor Reporting',
+          'Business Expansion Planning',
+        ],
+      },
+      {
+        title: 'Business Advisory',
+        items: [
+          'Startup Consultancy',
+          'Project Report',
+          'CMA Data for Bank Finance',
+          'Working Capital Assessment',
+          'Loan Documentation',
+          'Business Valuation',
+          'Financial Due Diligence',
+          'Business Restructuring',
+          'SOP Development',
+          'Internal Controls',
+        ],
+      },
+      {
+        title: 'Litigation & Representation',
+        items: [
+          'GST Appeals',
+          'GST Tribunal Matters',
+          'Income Tax Appeals',
+          'Assessment Representation',
+          'Notice Drafting & Reply',
+          'Departmental Hearings',
+          'Legal Documentation',
+        ],
+      },
+      {
+        title: 'International & FEMA Services',
+        items: [
+          'FEMA Advisory',
+          'Import Export Compliance',
+          'International Taxation',
+          'Transfer Pricing Support',
+          'Cross Border Advisory',
+          'NRI Tax Services',
+        ],
+      },
     ],
   },
   {
@@ -49,16 +189,7 @@ export const services: ServiceVertical[] = [
     title: 'Financial Services',
     mono: 'F',
     color: 'var(--copper)',
-    img: 'https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Wealth planning and investment advisory tailored to your goals.',
-    items: [
-      'Portfolio Management',
-      'Mutual Funds Advisory',
-      'Insurance Planning',
-      'Retirement Planning',
-      'Tax-Saving Investments',
-      'Wealth Reviews',
-    ],
     detailItems: [
       { mono: 'PM', title: 'Portfolio Management', desc: 'Actively managed equity and debt portfolios matched to your risk profile.' },
       { mono: 'MF', title: 'Mutual Funds Advisory', desc: 'Fund selection, SIP planning and portfolio rebalancing.' },
@@ -77,16 +208,7 @@ export const services: ServiceVertical[] = [
     title: 'RERA Services',
     mono: 'R',
     color: 'var(--gold)',
-    img: 'https://images.pexels.com/photos/6615095/pexels-photo-6615095.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Regulatory guidance for developers and real estate projects.',
-    items: [
-      'RERA Project Registration',
-      'Compliance & QPR Filings',
-      'Legal Documentation',
-      'Agent Registration',
-      'Project Advisory',
-      'Extension Filings',
-    ],
     detailItems: [
       { mono: 'RG', title: 'RERA Project Registration', desc: 'End-to-end registration for new real estate projects.' },
       { mono: 'QPR', title: 'Quarterly Progress Reports', desc: 'Timely QPR filings to keep projects compliant.' },
@@ -105,16 +227,7 @@ export const services: ServiceVertical[] = [
     title: 'Software Services',
     mono: 'S',
     color: 'var(--copper)',
-    img: 'https://images.pexels.com/photos/16129728/pexels-photo-16129728.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Technology that quietly runs your finance, ops and compliance.',
-    items: [
-      'Custom Software Development',
-      'Accounting / ERP Systems',
-      'Website & App Development',
-      'IT Consulting',
-      'Automation Tools',
-      'Data Dashboards',
-    ],
     detailItems: [
       { mono: 'CS', title: 'Custom Software Development', desc: 'Bespoke applications built around your workflows.' },
       { mono: 'ERP', title: 'Accounting / ERP Solutions', desc: 'Implementation and support for accounting and ERP systems.' },
@@ -133,16 +246,7 @@ export const services: ServiceVertical[] = [
     title: 'Insurance Services',
     mono: 'I',
     color: 'var(--gold)',
-    img: 'https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Insurance advisory that protects your business, assets and people.',
-    items: [
-      'Life Insurance Advisory',
-      'General Insurance Advisory',
-      'Corporate Insurance Solutions',
-      'Motor Insurance',
-      'Property & Fire Insurance',
-      'Claims Assistance',
-    ],
     detailItems: [
       { mono: 'LI', title: 'Life Insurance Planning', desc: 'Term, whole life and ULIP plans matched to your protection needs.' },
       { mono: 'GI', title: 'General Insurance Advisory', desc: 'Motor, home, fire and liability cover for individuals and businesses.' },
@@ -161,16 +265,7 @@ export const services: ServiceVertical[] = [
     title: 'Mediclaim Services',
     mono: 'M',
     color: 'var(--copper)',
-    img: 'https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'Health insurance advisory for individuals, families and employees.',
-    items: [
-      'Individual Health Insurance',
-      'Family Floater Plans',
-      'Senior Citizen Mediclaim',
-      'Group Mediclaim for Employees',
-      'Critical Illness Cover',
-      'Cashless Claim Support',
-    ],
     detailItems: [
       { mono: 'IM', title: 'Individual Mediclaim Plans', desc: 'Personalized health cover matched to your medical history and needs.' },
       { mono: 'FF', title: 'Family Floater Plans', desc: 'Single policy covering the entire family under one sum insured.' },

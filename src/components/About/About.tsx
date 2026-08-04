@@ -1,13 +1,23 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './About.module.css';
 
-const PHOTO =
-  'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1000';
+// Placeholder — swap for CA Jairam Purswani's actual professional photo.
+const DIRECTOR_PHOTO =
+  'https://images.pexels.com/photos/32844861/pexels-photo-32844861.jpeg?auto=compress&cs=tinysrgb&w=1000';
 
 const VALUES = [
-  { mono: 'I', title: 'Integrity', caption: 'First, always' },
-  { mono: 'C', title: 'Clarity', caption: 'In every report' },
-  { mono: 'S', title: 'Speed', caption: 'Without shortcuts' },
+  { mono: 'I', title: 'Integrity' },
+  { mono: 'E', title: 'Excellence' },
+  { mono: 'T', title: 'Transparency' },
+];
+
+const EXPERTISE = [
+  'GST & Taxation',
+  'Statutory & Tax Audit',
+  'Company Law & ROC',
+  'Virtual CFO Advisory',
+  'Business Restructuring',
+  'NRI & International Taxation',
 ];
 
 export function About() {
@@ -18,12 +28,10 @@ export function About() {
       <div className={styles.orb} />
       <div ref={revealRef} className={`${styles.grid} section-fade`}>
         <div className={styles.photoCard}>
-          <img src={PHOTO} alt="Founding team of Abhiriti Advisory" />
+          <img src={DIRECTOR_PHOTO} alt="CA Jairam Purswani, Director, Abhiriti Advisory" />
           <div className={styles.statOverlay}>
             <div className={styles.statNum}>20+ Years</div>
-            <div className={styles.statCaption}>
-              Guiding businesses through every number that matters
-            </div>
+            <div className={styles.statCaption}>CA Jairam Purswani — Director</div>
           </div>
         </div>
 
@@ -34,23 +42,50 @@ export function About() {
           </h2>
           <div className={styles.copy}>
             <p>
-              Abhiriti Advisory Pvt. Ltd. was founded to give growing businesses one dependable
-              partner for compliance, capital and technology — instead of four separate vendors.
-              Our team pairs qualified Chartered Accountants with financial planners, RERA
-              specialists and software engineers so every decision is backed by the right
-              expertise.
-            </p>
-            <p>
-              We believe advice should be proactive, documentation should be painless, and
-              technology should quietly do the heavy lifting.
+              Abhiriti Advisory pairs Chartered Accountants with financial planners, RERA
+              specialists and software engineers — one team, every number covered.
             </p>
           </div>
+
+          <div className={styles.directorBlock}>
+            <span className={styles.directorEyebrow}>Led by</span>
+            <h3 className={styles.directorName}>CA Jairam Purswani, Director</h3>
+            <p className={styles.directorBio}>
+              With 20+ years of experience, Jairam leads our CA and advisory team — overseeing
+              complex audit, tax and corporate engagements with a practical, growth-focused
+              approach.
+            </p>
+            <div className={styles.expertiseTags}>
+              {EXPERTISE.map((tag) => (
+                <span key={tag} className={styles.expertiseTag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <a
+              href="/downloads/Abhiriti-Advisory-Company-Profile.docx"
+              download
+              className={styles.downloadBtn}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 3v12m0 0 5-5m-5 5-5-5M4 19h16"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Download Company Profile
+            </a>
+          </div>
+
           <div className={styles.values}>
-            {VALUES.map((v) => (
-              <div key={v.title} className={styles.valueCard}>
-                <div className={styles.valueMono}>{v.mono}</div>
-                <div className={styles.valueTitle}>{v.title}</div>
-                <div className={styles.valueCaption}>{v.caption}</div>
+            {VALUES.map((v, i) => (
+              <div key={v.title} className={styles.valueItem}>
+                {i > 0 && <span className={styles.valueDivider} aria-hidden="true" />}
+                <span className={styles.valueMono}>{v.mono}</span>
+                <span className={styles.valueTitle}>{v.title}</span>
               </div>
             ))}
           </div>
