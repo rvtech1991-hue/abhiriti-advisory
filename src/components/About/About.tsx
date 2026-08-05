@@ -1,9 +1,7 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './About.module.css';
 
-// Placeholder — swap for CA Jairam Purswani's actual professional photo.
-const DIRECTOR_PHOTO =
-  'https://images.pexels.com/photos/32844861/pexels-photo-32844861.jpeg?auto=compress&cs=tinysrgb&w=1000';
+const DIRECTOR_PHOTO = '/images/jairam-purswani.jpeg';
 
 const VALUES = [
   { mono: 'I', title: 'Integrity' },
