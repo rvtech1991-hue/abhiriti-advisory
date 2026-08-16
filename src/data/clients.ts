@@ -75,4 +75,16 @@ export const industries: Industry[] = [
     name: 'Retail Businesses',
     img: 'https://images.pexels.com/photos/37080685/pexels-photo-37080685.jpeg?auto=compress&cs=tinysrgb&w=1280',
   },
+  {
+    name: 'Shipping',
+    img: 'https://images.pexels.com/photos/6595777/pexels-photo-6595777.jpeg?auto=compress&cs=tinysrgb&w=1280',
+  },
+  {
+    name: 'Bio Energy',
+    img: 'https://images.pexels.com/photos/7527908/pexels-photo-7527908.jpeg?auto=compress&cs=tinysrgb&w=1280',
+  },
+  {
+    name: 'Software',
+    img: 'https://images.pexels.com/photos/12899156/pexels-photo-12899156.jpeg?auto=compress&cs=tinysrgb&w=1280',
+  },
 ];

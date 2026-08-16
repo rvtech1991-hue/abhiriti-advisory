@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { leadership } from '../../data/team';
 import styles from './About.module.css';
 
 const DIRECTOR_PHOTO = '/images/jairam-purswani.jpeg';
@@ -7,6 +8,7 @@ const VALUES = [
   { mono: 'I', title: 'Integrity' },
   { mono: 'E', title: 'Excellence' },
   { mono: 'T', title: 'Transparency' },
+  { mono: 'C', title: 'Client Focus' },
 ];
 
 const EXPERTISE = [
@@ -25,11 +27,16 @@ export function About() {
     <section id="about" className={styles.section}>
       <div className={styles.orb} />
       <div ref={revealRef} className={`${styles.grid} section-fade`}>
-        <div className={styles.photoCard}>
-          <img src={DIRECTOR_PHOTO} alt="CA Jairam Purswani, Director, Abhiriti Advisory" />
+        <div className={styles.photoColumn}>
+          <div className={styles.photoCard}>
+            <img src={DIRECTOR_PHOTO} alt="CA Jairam Purswani, Managing Director, Abhiriti Advisory" />
+          </div>
           <div className={styles.statOverlay}>
-            <div className={styles.statNum}>20+ Years</div>
-            <div className={styles.statCaption}>CA Jairam Purswani — Director</div>
+            <div className={styles.statNum}>25+ Years</div>
+            <div className={styles.statCaption}>
+              CA Jairam Purswani
+              <span className={styles.statCaptionTitle}>Managing Director</span>
+            </div>
           </div>
         </div>
 
@@ -40,18 +47,32 @@ export function About() {
           </h2>
           <div className={styles.copy}>
             <p>
-              Abhiriti Advisory pairs Chartered Accountants with financial planners, RERA
-              specialists and software engineers — one team, every number covered.
+              Abhiriti Advisory Pvt. Ltd. is a professionally managed practice providing Audit and
+              Assurance Services — including Internal, External and Forensic Audit — alongside
+              legal advisory, Management Consultancy, Health &amp; Life Insurance Consultancy,
+              Mutual Fund and Investment Advisory, Software Services and Business Solutions to
+              clients across India. With 25+ years of professional experience, we help businesses
+              navigate complex statutory requirements while building for sustainable growth.
+            </p>
+            <p>
+              Our team combines technical expertise with practical business knowledge to deliver
+              timely, accurate and value-driven solutions. We serve startups, MSMEs, private
+              limited companies, LLPs, partnership firms, proprietorships, trusts, NGOs, exporters,
+              manufacturers and multinational businesses.
             </p>
           </div>
 
           <div className={styles.directorBlock}>
             <span className={styles.directorEyebrow}>Led by</span>
-            <h3 className={styles.directorName}>CA Jairam Purswani, Director</h3>
+            <h3 className={styles.directorName}>
+              CA Jairam Purswani
+              <span className={styles.directorTitle}>Managing Director</span>
+            </h3>
             <p className={styles.directorBio}>
-              With 20+ years of experience, Jairam leads our CA and advisory team — overseeing
-              complex audit, tax and corporate engagements with a practical, growth-focused
-              approach.
+              With 25+ years of experience, Jairam leads our team of Chartered Accountants,
+              Advocates, Financial Consultants, Software Consultants, Loan Consultants and
+              Insurance Advisors — personally overseeing complex audit, taxation and corporate
+              advisory engagements with a practical, growth-focused approach.
             </p>
             <div className={styles.expertiseTags}>
               {EXPERTISE.map((tag) => (
@@ -76,6 +97,20 @@ export function About() {
               </svg>
               Download Company Profile
             </a>
+          </div>
+
+          <div className={styles.secondLeader}>
+            <span className={styles.secondLeaderAvatar} aria-hidden="true">
+              {leadership.initials}
+            </span>
+            <div>
+              <h4 className={styles.secondLeaderName}>
+                {leadership.name}
+                <span className={styles.secondLeaderTitle}>{leadership.title}</span>
+              </h4>
+              <p className={styles.secondLeaderMeta}>{leadership.experience} of Experience</p>
+              <p className={styles.secondLeaderBio}>{leadership.bio}</p>
+            </div>
           </div>
 
           <div className={styles.values}>

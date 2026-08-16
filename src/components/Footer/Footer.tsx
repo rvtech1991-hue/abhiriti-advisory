@@ -18,8 +18,10 @@ export function Footer() {
           <div className={styles.colLinks}>
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#team">Our Team</a>
             <a href="#core">Services</a>
             <a href="#testimonials">Testimonials</a>
+            <a href="#presence">Branches</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
