@@ -1,3 +1,4 @@
+import { branches } from '../../data/branches';
 import { services } from '../../data/services';
 import styles from './Footer.module.css';
 
@@ -40,7 +41,12 @@ export function Footer() {
           <div className={styles.colLinks}>
             <span>RvTech1991@gmail.com</span>
             <span>+91 78751 91359</span>
-            <span>Belapur, Navi Mumbai, Maharashtra</span>
+            {branches.map((branch) => (
+              <span key={branch.name}>
+                {branch.name}
+                {branch.headOffice ? ' (Head Office)' : ''}
+              </span>
+            ))}
           </div>
         </div>
       </div>

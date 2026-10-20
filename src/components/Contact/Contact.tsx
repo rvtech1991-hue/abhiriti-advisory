@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type SubmitEvent } from 'react';
 import emailjs from '@emailjs/browser';
+import { branches } from '../../data/branches';
 import { services } from '../../data/services';
 import styles from './Contact.module.css';
 
@@ -170,8 +171,10 @@ export function Contact() {
               <div className={styles.rowValue}>+91 78751 91359</div>
             </div>
             <div>
-              <div className={styles.rowLabel}>Office</div>
-              <div className={styles.rowValue}>Belapur, Navi Mumbai, Maharashtra</div>
+              <div className={styles.rowLabel}>Offices</div>
+              <div className={styles.rowValue}>
+                {branches.map((branch) => branch.name).join(', ')}
+              </div>
             </div>
           </div>
         </div>

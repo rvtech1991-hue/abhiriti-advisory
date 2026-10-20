@@ -14,6 +14,7 @@ import { Presence } from './components/Presence/Presence';
 import { CtaBanner } from './components/CtaBanner/CtaBanner';
 import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
+import { BackToTop } from './components/BackToTop/BackToTop';
 import styles from './App.module.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <CtaBanner />
       <Contact />
       <Footer />
+      <BackToTop />
     </div>
   );
 }
